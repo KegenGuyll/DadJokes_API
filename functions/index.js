@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const util = require('util');
-const { randomJoke, randomTen, jokeByType } = require('./handler');
+const { randomJoke, randomTen, jokeByType, jokeById } = require('./handler');
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -50,6 +50,10 @@ app.get('/jokes/ten', (req, res) => {
   res.json(randomTen());
 });
 
+app.get('/jokes/:id', (req, res) => {
+  res.json(jokeById(Number(req.params.id)));
+});
+
 app.get('/jokes/:type/random', (req, res) => {
   res.json(jokeByType(req.params.type, 1));
 });
@@ -66,3 +70,5 @@ app.use((err, req, res, next) => {
     message: err.message
   });
 });
+
+exports.DadJokes = functions.https.onRequest(app);
