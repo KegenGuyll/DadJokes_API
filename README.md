@@ -29,7 +29,7 @@ The current version of the API lives at ```https://us-central1-dadsofunny.cloudf
 
 | Enpoint       | What it does                                                                |
 | ------------- |:---------------------------------------------------------------------------:|
-| [`/random_joke`](#/random_joke)| Returns a joke object that contains a `setup`, `punchline`, `type` and `id` |
+| [`/random_joke`](###/random_joke)| Returns a joke object that contains a `setup`, `punchline`, `type` and `id` |
 | `/random_ten` | Returns an array with 10 jokes objects.                                     |
 | `/jokes/:id`  | Returns a joke object with a specific id.                                   |
 | `/jokes/:type/random`| Returns a joke object randomly with a specific type.                 |
