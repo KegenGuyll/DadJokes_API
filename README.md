@@ -21,7 +21,7 @@ The current version of the API lives at ```https://us-central1-dadsofunny.cloudf
 #### Versions
 
 | Version       | Date          | Changes            |
-| ------------- |:-------------:|:------------------:|
+| :-------------: |:-------------:|:------------------:|
 | `Version`     |  7/7/19       | Initial deployment | 
 
 
@@ -194,6 +194,6 @@ This API supports a data response in JSON format.
 
 
 |Field name | Description | Data type |
-|-----------|:-----------:|:----------|
+|:-----------:|:-----------:|:----------:|
 |ID         |Unique identifier| string|
 |TYPE       |Identifer of group| string|  
