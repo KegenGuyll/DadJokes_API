@@ -29,11 +29,11 @@ The current version of the API lives at ```https://us-central1-dadsofunny.cloudf
 
 | Endpoint       | What it does                                                                |
 | ------------- |:---------------------------------------------------------------------------:|
-| [`/random_joke`](#/random_joke)| Returns a joke object that contains a `setup`, `punchline`, `type` and `id` |
-| [`/random_ten`](#/random_ten) | Returns an array with 10 jokes objects.                                     |
-| [`/jokes/:id`](#/jokes/:id)  | Returns a joke object with a specific id.                                   |
-| [`/jokes/:type/random`](#/jokes/:type/random)| Returns a joke object randomly with a specific type.                 |
-| [`/jokes/:type/ten`](#/jokes/:type/ten)| Returns an array with 10 random jokes with a specific type.             | 
+| [`/random_joke`](#random_joke)| Returns a joke object that contains a `setup`, `punchline`, `type` and `id` |
+| [`/random_ten`](#random_ten) | Returns an array with 10 jokes objects.                                     |
+| [`/jokes/:id`](#jokesid)  | Returns a joke object with a specific id.                                   |
+| [`/jokes/:type/random`](#jokestyperandom)| Returns a joke object randomly with a specific type.                 |
+| [`/jokes/:type/ten`](#jokestypeten)| Returns an array with 10 random jokes with a specific type.             | 
 
 
 #### Types
