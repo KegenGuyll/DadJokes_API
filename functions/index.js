@@ -3,14 +3,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const util = require('util');
-const { randomJoke, randomTen, jokeByType, jokeById } = require('./handler');
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+const {
+  randomJoke,
+  randomTen,
+  jokeByType,
+  jokeById,
+  test,
+  createJoke
+} = require('./handler');
 
 const app = express();
 app.use(
@@ -34,8 +34,20 @@ app.get('/ping', (req, res) => {
   res.send('pong');
 });
 
+app.get('/test', (req, res) => {
+  res.json(test());
+});
+
 app.get('/random_joke', (req, res) => {
   res.json(randomJoke());
+});
+
+app.post('/jokes/create', (req, res) => {
+  const jokeData = {
+    setup: req.body.setup,
+    punchline: req.body.punchline
+  };
+  res.json(createJoke(jokeData));
 });
 
 app.get('/random_ten', (req, res) => {
