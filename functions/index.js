@@ -3,14 +3,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const util = require('util');
+const { randomTen, test, createJoke } = require('./handler');
 const {
   randomJoke,
-  randomTen,
+  randomJokeCount
+} = require('./controllers/randomJoke.controller');
+const { jokeById } = require('./controllers/jokeById.controller');
+const {
   jokeByType,
-  jokeById,
-  test,
-  createJoke
-} = require('./handler');
+  jokeByTypeCount
+} = require('./controllers/jokeByType.controller');
 
 const app = express();
 app.use(
@@ -30,16 +32,16 @@ app.get('/', (req, res) => {
   res.send('Try /random_joke, /random_ten, /jokes/random, or /jokes/ten');
 });
 
-app.get('/ping', (req, res) => {
-  res.send('pong');
-});
-
 app.get('/test', (req, res) => {
   res.json(test());
 });
 
-app.get('/random_joke', (req, res) => {
-  res.json(randomJoke());
+app.get('/random/jokes', (req, res) => {
+  randomJoke(req, res);
+});
+
+app.get('/random/jokes/:count', (req, res) => {
+  randomJokeCount(req, res);
 });
 
 app.post('/jokes/create', (req, res) => {
@@ -50,28 +52,16 @@ app.post('/jokes/create', (req, res) => {
   res.json(createJoke(jokeData));
 });
 
-app.get('/random_ten', (req, res) => {
-  res.json(randomTen());
-});
-
-app.get('/jokes/random', (req, res) => {
-  res.json(randomJoke());
-});
-
-app.get('/jokes/ten', (req, res) => {
-  res.json(randomTen());
-});
-
 app.get('/jokes/:id', (req, res) => {
-  res.json(jokeById(Number(req.params.id)));
+  jokeById(req, res);
 });
 
-app.get('/jokes/:type/random', (req, res) => {
-  res.json(jokeByType(req.params.type, 1));
+app.get('/random/type/:type', (req, res) => {
+  jokeByType(req, res);
 });
 
-app.get('/jokes/:type/ten', (req, res) => {
-  res.json(jokeByType(req.params.type, 10));
+app.get('/random/type/:type/:count', (req, res) => {
+  jokeByTypeCount(req, res);
 });
 
 app.use((err, req, res, next) => {
