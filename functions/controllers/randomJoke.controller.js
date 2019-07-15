@@ -1,16 +1,17 @@
-const jokes = require('../jokes/index.json');
 const { randomN } = require('../service/randomN.service');
+const { retrieveJokes } = require('../service/jokes.service');
 
 const randomJoke = async (request, response) => {
-  const joke = jokes[Math.floor(Math.random() * jokes.length)];
+  const data = await retrieveJokes();
+  const joke = data.jokes[Math.floor(Math.random() * data.jokes.length)];
 
   return response.json(joke);
 };
 
 const randomJokeCount = async (request, response) => {
   const payload = await request;
-
-  const joke = await randomN(jokes, payload.params.count);
+  const data = await retrieveJokes();
+  const joke = await randomN(data.jokes, payload.params.count);
 
   return response.json(joke);
 };

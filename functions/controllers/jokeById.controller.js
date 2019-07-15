@@ -1,8 +1,9 @@
-const jokes = require('../jokes/index.json');
+const { retrieveJokes } = require('../service/jokes.service');
 
 const jokeById = async (request, response) => {
+  const data = await retrieveJokes();
   const payload = await request;
-  const joke = await jokes.filter(
+  const joke = await data.jokes.filter(
     joke => joke.id === Number(payload.params.id)
   );
 
