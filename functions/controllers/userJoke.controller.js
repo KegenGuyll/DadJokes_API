@@ -1,4 +1,5 @@
 const { createJoke } = require('../service/createJokes.service');
+const { deleteJoke } = require('../service/deleteJokes.service');
 
 const addUserJoke = async (request, response) => {
   const jokeData = {
@@ -12,4 +13,12 @@ const addUserJoke = async (request, response) => {
   return response.json(creation);
 };
 
-module.exports = { addUserJoke };
+const removeUserJoke = async (request, response) => {
+  //const id = request.params.id;
+
+  const remove = await deleteJoke(id);
+
+  return response.json('tset');
+};
+
+module.exports = { addUserJoke, removeUserJoke };

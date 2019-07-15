@@ -17,7 +17,10 @@ const {
   jokeByType,
   jokeByTypeCount
 } = require('./controllers/jokeByType.controller');
-const { addUserJoke } = require('./controllers/userJoke.controller');
+const {
+  addUserJoke,
+  removeUserJoke
+} = require('./controllers/userJoke.controller');
 
 const app = express();
 app.use(
@@ -47,6 +50,10 @@ app.get('/random/jokes/:count', (req, res) => {
 
 app.post('/jokes/create', (req, res) => {
   addUserJoke(req, res);
+});
+
+app.get('/jokes/remove/:id', (req, res) => {
+  removeUserJoke(req, res);
 });
 
 app.get('/jokes/:id', (req, res) => {

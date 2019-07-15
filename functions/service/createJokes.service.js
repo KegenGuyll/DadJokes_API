@@ -1,10 +1,9 @@
 const admin = require('firebase-admin');
-const { retrieveJokes } = require('../service/jokes.service');
+const uuid = require('uuid');
 const db = admin.firestore();
 
 const createJoke = async jokeData => {
-  const data = await retrieveJokes();
-  const id = data.jokes.length++;
+  const id = uuid.v4();
   const setup = jokeData.setup;
   const punchline = jokeData.punchline;
   const type = jokeData.type;
