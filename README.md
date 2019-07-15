@@ -17,20 +17,22 @@ The current version of the API lives at `https://us-central1-dadsofunny.cloudfun
 
 #### Versions
 
-|  Version  |  Date   |       Changes        |
-| :-------: | :-----: | :------------------: |
-| `Version` | 7/7/19  |  Initial deployment  |
-| `Version` | 7/11/19 | Cleaned up endpoints |
+|  Version  |  Date   | Changes                                          |
+| :-------: | :-----: | ------------------------------------------------ |
+| `Version` | 7/7/19  | Initial deployment                               |
+| `Version` | 7/11/19 | Cleaned up endpoints                             |
+| `Version` | 7/14/19 | added create jokes feature and changed id format |
 
 #### Endpoints
 
-| Endpoint                                            |                                What it does                                 |
-| --------------------------------------------------- | :-------------------------------------------------------------------------: |
-| [`/random/jokes`](#randomjokes)                     | Returns a joke object that contains a `setup`, `punchline`, `type` and `id` |
-| [`/random/jokes/:count`](#randomjokescount)         |                   Returns an array with 10 jokes objects.                   |
-| [`/jokes/:id`](#jokesid)                            |                  Returns a joke object with a specific id.                  |
-| [`/random/type/:type`](#randomtypetype)             |            Returns a joke object randomly with a specific type.             |
-| [`/random/type/:type/:count`](#randomtypetypecount) |         Returns an array with 10 random jokes with a specific type.         |
+| Endpoint                                                  |                                   What it does                                   |
+| --------------------------------------------------------- | :------------------------------------------------------------------------------: |
+| `GET` [`/random/jokes`](#randomjokes)                     |   Returns a joke object that contains a `setup`, `punchline`, `type` and `id`    |
+| `GET` [`/random/jokes/:count`](#randomjokescount)         |                     Returns an array with 10 jokes objects.                      |
+| `GET` [`/jokes/:id`](#jokesid)                            |                    Returns a joke object with a specific id.                     |
+| `POST` [`/jokes/create`](#jokescreate)                    | If your provide a `setup`, `punchline` and `type` it will create a joke for you. |
+| `GET` [`/random/type/:type`](#randomtypetype)             |               Returns a joke object randomly with a specific type.               |
+| `GET` [`/random/type/:type/:count`](#randomtypetypecount) |           Returns an array with 10 random jokes with a specific type.            |
 
 #### Types
 
@@ -90,6 +92,24 @@ This API supports a data response in JSON format.
   }
 ]
 ```
+
+### /jokes/create
+
+`/jokes/create`
+
+`body`
+
+```json
+{
+  "setup": "this is a test",
+  "punchline": "this is a funny test",
+  "type": "test"
+}
+```
+
+`response`
+
+"added joke successfully"
 
 ### /random/type/:type
 
