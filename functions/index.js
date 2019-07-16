@@ -1,9 +1,13 @@
+const admin = require('firebase-admin');
+const serviceAccount = require('./ServiceAccountKey.json');
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 const functions = require('firebase-functions');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const util = require('util');
-const { randomTen, test, createJoke } = require('./handler');
 const {
   randomJoke,
   randomJokeCount
@@ -13,6 +17,10 @@ const {
   jokeByType,
   jokeByTypeCount
 } = require('./controllers/jokeByType.controller');
+const {
+  addUserJoke,
+  removeUserJoke
+} = require('./controllers/userJoke.controller');
 
 const app = express();
 app.use(
@@ -32,10 +40,6 @@ app.get('/', (req, res) => {
   res.send('Try /random_joke, /random_ten, /jokes/random, or /jokes/ten');
 });
 
-app.get('/test', (req, res) => {
-  res.json(test());
-});
-
 app.get('/random/jokes', (req, res) => {
   randomJoke(req, res);
 });
@@ -45,11 +49,11 @@ app.get('/random/jokes/:count', (req, res) => {
 });
 
 app.post('/jokes/create', (req, res) => {
-  const jokeData = {
-    setup: req.body.setup,
-    punchline: req.body.punchline
-  };
-  res.json(createJoke(jokeData));
+  addUserJoke(req, res);
+});
+
+app.get('/jokes/remove/:id', (req, res) => {
+  removeUserJoke(req, res);
 });
 
 app.get('/jokes/:id', (req, res) => {
