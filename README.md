@@ -28,10 +28,10 @@ The current version of the API lives at `https://us-central1-dadsofunny.cloudfun
 | Endpoint                                                  |                                   What it does                                   |
 | --------------------------------------------------------- | :------------------------------------------------------------------------------: |
 | `GET` [`/random/jokes`](#randomjokes)                     |   Returns a joke object that contains a `setup`, `punchline`, `type` and `id`    |
-| `GET` [`/random/jokes/:count`](#randomjokescount)         |                     Returns an array with 50 jokes objects.                      |
+| `GET` [`/random/jokes/:count`](#randomjokescount)         |                     Returns an array with up to 50 jokes objects.                      |
 | `GET` [`/jokes/:id`](#jokesid)                            |                    Returns a joke object with a specific id.                     |
 | `POST` [`/jokes/create`](#jokescreate)                    | If your provide a `setup`, `punchline` and `type` it will create a joke for you. |
-| `GET` [`/jokes/remove/:id`](#jokeremove)                  |                       With remove a joke with the given id                       |
+| `GET` [`/jokes/remove/:id`](#jokeremoveid)                  |                       With remove a joke with the given id                       |
 | `GET` [`/random/type/:type`](#randomtypetype)             |               Returns a joke object randomly with a specific type.               |
 | `GET` [`/random/type/:type/:count`](#randomtypetypecount) |           Returns an array with 10 random jokes with a specific type.            |
 
