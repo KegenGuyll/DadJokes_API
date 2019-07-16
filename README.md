@@ -17,11 +17,11 @@ The current version of the API lives at `https://us-central1-dadsofunny.cloudfun
 
 #### Versions
 
-|  Version  |  Date   | Changes                                          |
-| :-------: | :-----: | ------------------------------------------------ |
-| `Version` | 7/7/19  | Initial deployment                               |
-| `Version` | 7/11/19 | Cleaned up endpoints                             |
-| `Version` | 7/14/19 | added create jokes feature and changed id format |
+|  Version  |  Date   | Changes                                                               |
+| :-------: | :-----: | --------------------------------------------------------------------- |
+| `Version` | 7/7/19  | Initial deployment                                                    |
+| `Version` | 7/11/19 | Cleaned up endpoints                                                  |
+| `Version` | 7/15/19 | added create jokes feature, changed id format and remove joke feature |
 
 #### Endpoints
 
@@ -31,6 +31,7 @@ The current version of the API lives at `https://us-central1-dadsofunny.cloudfun
 | `GET` [`/random/jokes/:count`](#randomjokescount)         |                     Returns an array with 10 jokes objects.                      |
 | `GET` [`/jokes/:id`](#jokesid)                            |                    Returns a joke object with a specific id.                     |
 | `POST` [`/jokes/create`](#jokescreate)                    | If your provide a `setup`, `punchline` and `type` it will create a joke for you. |
+| `GET` [`/jokes/remove/:id`](#jokeremove)                  |                       With remove a joke with the given id                       |
 | `GET` [`/random/type/:type`](#randomtypetype)             |               Returns a joke object randomly with a specific type.               |
 | `GET` [`/random/type/:type/:count`](#randomtypetypecount) |           Returns an array with 10 random jokes with a specific type.            |
 
@@ -110,6 +111,22 @@ This API supports a data response in JSON format.
 `response`
 
 "added joke successfully"
+
+### /jokes/remove/:id
+
+`/jokes/remove/e3b8d13e-6901-4373-a1b9-0bd61f2ce5d2`
+
+```json
+{
+  "message": "Joke removed successfully",
+  "joke": {
+    "setup": "test",
+    "type": "test",
+    "id": "e3b8d13e-6901-4373-a1b9-0bd61f2ce5d2",
+    "punchline": "this is a funny test"
+  }
+}
+```
 
 ### /random/type/:type
 

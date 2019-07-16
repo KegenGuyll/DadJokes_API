@@ -19,7 +19,7 @@ const createJoke = async jokeData => {
       })
     })
     .then(() => {
-      return 'add joke successfully';
+      return { setup, punchline, type, id };
     })
     .catch(e => {
       return e;

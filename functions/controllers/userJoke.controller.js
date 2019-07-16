@@ -14,11 +14,14 @@ const addUserJoke = async (request, response) => {
 };
 
 const removeUserJoke = async (request, response) => {
-  //const id = request.params.id;
+  const id = request.params.id;
 
   const remove = await deleteJoke(id);
 
-  return response.json('tset');
+  return response.json({
+    message: 'Joke removed successfully',
+    joke: remove[0]
+  });
 };
 
 module.exports = { addUserJoke, removeUserJoke };
